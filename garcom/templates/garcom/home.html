@@ -50,16 +50,54 @@
 
     <div id="grupo-atendimento" class="grupo list-group collapse">
       {% for prim_atendimento in prim_atendimentos %}
-        <a href="#" class="list-group-item list-group-item-action">
+        <a href="#" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#prim_atend{{prim_atendimento.id}}">
           <p>Primeiro atendimento</p>
           <p class="indica-mesa"> {{ prim_atendimento.mesa }}</p>
         </a>
+        <!-- Modal -->
+        <div class="modal fade" id="prim_atend{{prim_atendimento.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Atender Tarefa</h1><!--Titulo do Modal-->
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <p>deseja atender a tarefa <b>{{ prim_atendimento }}</b>?</p>
+                <p>ao continuar, a tarefa será removida da lista de tarefas pendentes.</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" onclick="location.href=''">Continuar</button>
+              </div>
+            </div>
+          </div>
+        </div>
       {% endfor %}
       {% for atendimento in atendimentos %}
-        <a href="#" class="list-group-item list-group-item-action">
+        <a href="#" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#atend{{ atendimento.id }}">
           <p>Atendimento</p>
           <p class="indica-mesa"> {{ atendimento.mesa }}</p>
         </a>
+        <!-- Modal -->
+        <div class="modal fade" id="atend{{atendimento.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Atender Tarefa</h1><!--Titulo do Modal-->
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <p>deseja atender a tarefa <b>{{ atendimento }}</b>?</p>
+                <p>ao continuar, a tarefa será removida da lista de tarefas pendentes.</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" onclick="location.href=''">Continuar</button>
+              </div>
+            </div>
+          </div>
+        </div>
       {% empty %}
         <li class="list-group-item list-group-item-action">
           <p>Não há atendimentos pendentes.</p>

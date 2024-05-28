@@ -129,3 +129,4 @@ class ItemPedido(models.Model):
 
     def __str__(self):
         return self.item.item
+
